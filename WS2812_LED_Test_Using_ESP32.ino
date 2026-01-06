@@ -4,12 +4,13 @@
 #endif
 
 // #define PIN 25
-#define PIN 23
+#define PIN 12
+#define NUM_LEDS 50
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
 // Parameter 3 = pixel type flags, add together as needed:
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(6, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRB + NEO_KHZ800);
 
 
 void setup() {
@@ -17,11 +18,10 @@ void setup() {
   #if defined (__AVR_ATtiny85__)
     if (F_CPU == 16000000) clock_prescale_set(clock_div_1);
   #endif
-  
   Serial.println("WS2812 Leds Test Using ESP32");
   
   strip.begin();
-  strip.setBrightness(50);
+  strip.setBrightness(10);
   strip.show(); // Initialize all pixels to 'off'
 }
 
